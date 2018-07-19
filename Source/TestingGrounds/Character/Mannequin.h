@@ -28,6 +28,8 @@ private:
 protected:
 	virtual void BeginPlay() override;
 
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
 public:
 	// Sets default values for this character's properties
 	AMannequin();
@@ -36,7 +38,7 @@ public:
 	TSubclassOf<AGun> GunBlueprint;
 
 	UFUNCTION(BlueprintCallable, Category = Weapon)
-	void Fire();
+	void PullTrigger();
 
 	
 	

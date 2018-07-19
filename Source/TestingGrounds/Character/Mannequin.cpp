@@ -44,8 +44,22 @@ void AMannequin::BeginPlay()
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	Gun->AttachToComponent(FPMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));	//Attach gun to FPMesh
 	Gun->AnimInstance = FPMesh->GetAnimInstance();
+
+	//SetupPlayerInputComponent runs before BeginPlay() and the Gun is not instantiated at that point
+	//Binding the Fire method now will resolve this problem
+	//Only the Player has InputComponent as a class default
+	if (InputComponent != NULL)
+	{
+		InputComponent->BindAction("Fire", IE_Pressed, this, &AMannequin::PullTrigger);
+	}
 }
-void AMannequin::Fire()
+
+void AMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void AMannequin::PullTrigger()
 
 {
 	Cast<AGun>(Gun)->OnFire();
