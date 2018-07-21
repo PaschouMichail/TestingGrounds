@@ -43,13 +43,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class USoundBase* FireSound;
 
-	/** AnimMontage to play each time we fire */
+	/** 3rd Person AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class UAnimMontage* FireAnimation;
+	class UAnimMontage* TPFireAnimation;
 
-	/** AnimInstance to play each time we fire */
+	/** 1st Person AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class UAnimInstance* AnimInstance;
+		class UAnimMontage* FPFireAnimation;
+
+	/** 3rd Person AnimInstance to play each time we fire */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	class UAnimInstance* TPAnimInstance;
 	
-	
+	/** 1st Person AnimInstance to play each time we fire */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		class UAnimInstance* FPAnimInstance;
 };

@@ -29,6 +29,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+	virtual void UnPossessed() override;
 
 public:
 	// Sets default values for this character's properties

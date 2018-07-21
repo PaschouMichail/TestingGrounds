@@ -65,12 +65,15 @@ void AGun::OnFire()
 		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 	}
 
-	// try and play a firing animation if specified
-	if (FireAnimation != NULL)
+	// try and play a 3rd Person firing animation if specified
+	if (TPFireAnimation != nullptr && TPAnimInstance != nullptr)
 	{
-		if (AnimInstance != NULL)
-		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
-		}
+		TPAnimInstance->Montage_Play(TPFireAnimation, 1.f);
+	}
+
+	// try and play a 1st Person firing animation if specified
+	if (FPFireAnimation != nullptr && FPAnimInstance != nullptr)
+	{
+		FPAnimInstance->Montage_Play(FPFireAnimation, 1.f);
 	}
 }
